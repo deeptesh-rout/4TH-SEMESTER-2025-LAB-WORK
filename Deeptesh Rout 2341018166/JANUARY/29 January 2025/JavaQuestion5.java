@@ -1,24 +1,48 @@
-class Employee {
-    public double calculateSalary() {
-        return 50000; // Default salary
+class Shape {
+    public void draw() {
+        System.out.println("Drawing a shape");
     }
 }
 
-class Manager extends Employee {
+class Circle extends Shape {
     @Override
-    public double calculateSalary() {
-        double baseSalary = super.calculateSalary();
-        double bonus = 20000; // Bonus for Manager
-        return baseSalary + bonus;
+    public void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+
+class Rectangle extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing a rectangle");
+    }
+}
+
+class Triangle extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing a triangle");
     }
 }
 
 public class JavaQuestion5 {
     public static void main(String[] args) {
-        Employee emp = new Employee();
-        Manager mgr = new Manager();
+        Shape[] shapes = { new Shape(), new Circle(), new Rectangle(), new Triangle() };
 
-        System.out.println("Employee Salary: " + emp.calculateSalary()); // Output: 50000
-        System.out.println("Manager Salary: " + mgr.calculateSalary()); // Output: 70000
+        for (Shape shape : shapes) {
+            shape.draw();
+        }
     }
 }
+
+
+/*
+ * 
+ * output 
+ * 
+Drawing a shape
+Drawing a circle
+Drawing a rectangle
+Drawing a triangle
+
+ */

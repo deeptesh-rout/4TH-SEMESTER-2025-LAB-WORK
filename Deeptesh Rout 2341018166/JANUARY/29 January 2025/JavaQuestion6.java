@@ -1,48 +1,38 @@
-class Shape {
-    public void draw() {
-        System.out.println("Drawing a shape");
+class Payment {
+    public void processPayment() {
+        System.out.println("Processing payment");
     }
 }
 
-class Circle extends Shape {
+class CreditCardPayment extends Payment {
     @Override
-    public void draw() {
-        System.out.println("Drawing a circle");
+    public void processPayment() {
+        System.out.println("Processing credit card payment");
     }
 }
 
-class Rectangle extends Shape {
+class PayPalPayment extends Payment {
     @Override
-    public void draw() {
-        System.out.println("Drawing a rectangle");
-    }
-}
-
-class Triangle extends Shape {
-    @Override
-    public void draw() {
-        System.out.println("Drawing a triangle");
+    public void processPayment() {
+        System.out.println("Processing PayPal payment");
     }
 }
 
 public class JavaQuestion6 {
     public static void main(String[] args) {
-        Shape[] shapes = { new Shape(), new Circle(), new Rectangle(), new Triangle() };
+        Payment[] payments = { new Payment(), new CreditCardPayment(), new PayPalPayment() };
 
-        for (Shape shape : shapes) {
-            shape.draw();
+        for (Payment payment : payments) {
+            payment.processPayment();
         }
     }
 }
-
-
 /*
  * 
- * output 
+ * ouput
  * 
-Drawing a shape
-Drawing a circle
-Drawing a rectangle
-Drawing a triangle
+Processing payment
+Processing credit card payment
+Processing PayPal payment
 
  */
