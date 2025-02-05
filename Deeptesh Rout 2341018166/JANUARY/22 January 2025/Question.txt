@@ -1,0 +1,76 @@
+package Question;
+
+public class JavaQuestion {
+
+    // Method to compute pow(x, y) where y is in the form of 2^k using bitwise shifting
+    public static int pow(int x, int y) {
+        int result = 1;
+        
+        // Ensure y is in the form of 2^k
+        while (y > 0) {
+            if ((y & 1) == 1) {
+                result *= x;
+            }
+            x *= x; // x = x^2
+            y >>= 1; // y = y / 2
+        }
+        
+        return result;
+    }
+
+    // Method for addition of two numbers without using arithmetic operators
+    public static int add(int a, int b) {
+        while (b != 0) {
+            int carry = a & b; // Carry contains common set bits
+            a = a ^ b;          // Sum of bits where at least one of the bits is not set
+            b = carry << 1;     // Carry is shifted by one so that adding it to a gives the required sum
+        }
+        return a;
+    }
+
+    // Method for subtraction of two numbers without using arithmetic operators
+    public static int subtract(int a, int b) {
+        while (b != 0) {
+            int borrow = (~a) & b; // Borrow contains common unset bits
+            a = a ^ b;              // Subtraction of bits where at least one of the bits is set
+            b = borrow << 1;        // Borrow is shifted by one
+        }
+        return a;
+    }
+
+    // Method to calculate the parity bit of a long integer (1 for odd, 0 for even)
+    public static int parity(long number) {
+        int parityBit = 0;
+        while (number != 0) {
+            parityBit ^= (number & 1); // XOR the current least significant bit
+            number >>= 1;              // Shift right by 1 to examine the next bit
+        }
+        return parityBit;
+    }
+
+    // Main method to invoke all the functions
+    public static void main(String[] args) {
+        // Test the pow function
+        int x = 3;
+        int y = 8;
+        int result = pow(x, y);
+        System.out.println(x + " raised to the power of " + y + " is: " + result);
+
+        // Test the add function
+        int num1 = 10;
+        int num2 = 20;
+        int sum = add(num1, num2);
+        System.out.println(num1 + " + " + num2 + " = " + sum);
+
+        // Test the subtract function
+        int num3 = 30;
+        int num4 = 10;
+        int diff = subtract(num3, num4);
+        System.out.println(num3 + " - " + num4 + " = " + diff);
+
+        // Test the parity function
+        long num5 = 123456789L;
+        int parityBit = parity(num5);
+        System.out.println("The parity bit of " + num5 + " is: " + parityBit);
+    }
+}
