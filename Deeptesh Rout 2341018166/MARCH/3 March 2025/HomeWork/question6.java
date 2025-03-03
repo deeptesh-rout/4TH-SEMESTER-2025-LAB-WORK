@@ -1,60 +1,50 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-
-class User {
-    private String name;
-    private int age;
+class Pair<K, V> {
+    private K key;
+    private V value;
 
     // Parameterized constructor
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
     }
 
-    // Getter for name
-    public String getName() {
-        return name;
+    // Getter for key
+    public K getKey() {
+        return key;
     }
 
-    // Setter for name
-    public void setName(String name) {
-        this.name = name;
+    // Setter for key
+    public void setKey(K key) {
+        this.key = key;
     }
 
-    // Getter for age
-    public int getAge() {
-        return age;
+    // Getter for value
+    public V getValue() {
+        return value;
     }
 
-    // Setter for age
-    public void setAge(int age) {
-        this.age = age;
+    // Setter for value
+    public void setValue(V value) {
+        this.value = value;
+    }
+
+    // Override toString() for displaying key-value pair
+    @Override
+    public String toString() {
+        return "(" + key + ", " + value + ")";
     }
 }
 
 public class question6 {
     public static void main(String[] args) {
-        ArrayList<User> users = new ArrayList<>();
+        // Creating Pair objects
+        Pair<Integer, String> pair1 = new Pair<>(1, "One");
+        Pair<String, Double> pair2 = new Pair<>("Pi", 3.14159);
+        Pair<Character, Boolean> pair3 = new Pair<>('A', true);
 
-        // Adding User objects to the ArrayList
-        users.add(new User("Alice", 25));
-        users.add(new User("Bob", 30));
-        users.add(new User("Charlie", 22));
-
-        // Printing user details before sorting
-        System.out.println("Users before sorting:");
-        for (User user : users) {
-            System.out.println(user.getName() + " - " + user.getAge());
-        }
-
-        // Sorting users based on age
-        Collections.sort(users, Comparator.comparingInt(User::getAge));
-
-        // Printing user details after sorting
-        System.out.println("\nUsers after sorting by age:");
-        for (User user : users) {
-            System.out.println(user.getName() + " - " + user.getAge());
-        }
+        // Retrieving and printing key-value pairs
+        System.out.println("Pair 1: " + pair1);
+        System.out.println("Pair 2: " + pair2);
+        System.out.println("Pair 3: " + pair3);
     }
 }

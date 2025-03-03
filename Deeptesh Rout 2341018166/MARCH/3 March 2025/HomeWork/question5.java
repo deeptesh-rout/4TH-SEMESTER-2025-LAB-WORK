@@ -1,67 +1,52 @@
+class Book {
+    private int bookId;
+    private String bookName;
+    private double price;
 
-// Rectangle class
-class Rectangle {
-    // Private attributes
-    private double length;
-    private double width;
-
-    // Constructor to initialize attributes
-    public Rectangle(double length, double width) {
-        this.length = length;
-        this.width = width;
+    public Book(int bookId, String bookName, double price) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.price = price;
     }
 
-    // Setter methods
-    public void setLength(double length) {
-        this.length = length;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setWidth(double width) {
-        this.width = width;
+    public String getBookName() {
+        return bookName;
     }
 
-    // Getter methods
-    public double getLength() {
-        return length;
+    public double getPrice() {
+        return price;
     }
 
-    public double getWidth() {
-        return width;
+    @Override
+    public String toString() {
+        return "Book ID: " + bookId + ", Name: " + bookName + ", Price: $" + price;
     }
 
-    // Method to calculate the area of the rectangle
-    public double calculateArea() {
-        return length * width;
-    }
-
-    // Method to calculate the perimeter of the rectangle
-    public double calculatePerimeter() {
-        return 2 * (length + width);
-    }
-
-    // Method to display the details of the rectangle
-    public void displayDetails() {
-        System.out.println("Length: " + length + ", Width: " + width);
-        System.out.println("Area: " + calculateArea());
-        System.out.println("Perimeter: " + calculatePerimeter());
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Book book = (Book) obj;
+        return Double.compare(book.price, price) == 0;
     }
 }
 
-// Main class
 public class question5 {
     public static void main(String[] args) {
-        // Create an object of the Rectangle class
-        Rectangle myRectangle = new Rectangle(5.0, 3.0);
+        Book book1 = new Book(1, "Java Programming", 29.99);
+        Book book2 = new Book(2, "Python Basics", 39.99);
 
-        // Display the area and perimeter of the rectangle
-        myRectangle.displayDetails();
-        
-        // Update the attributes of the rectangle
-        myRectangle.setLength(7.0);
-        myRectangle.setWidth(4.0);
-        
-        // Display the updated area and perimeter
-        System.out.println("\nUpdated details of the rectangle:");
-        myRectangle.displayDetails();
+        System.out.println("Book 1 Details: " + book1);
+        System.out.println("Book 2 Details: " + book2);
+
+        if (book1.equals(book2)) {
+            System.out.println("Both books have the same price.");
+        } else {
+            System.out.println("Books have different prices.");
+        }
     }
 }
