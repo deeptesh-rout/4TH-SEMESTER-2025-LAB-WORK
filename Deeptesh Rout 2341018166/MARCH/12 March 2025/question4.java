@@ -3,19 +3,21 @@ import java.util.Scanner;
 public class question4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter an integer: ");
 
         try {
+            System.out.print("Enter an integer: ");
             int number = scanner.nextInt();
+
             if (number < 0) {
-                throw new ArithmeticException("Cannot calculate the square root of a negative number.");
+                throw new ArithmeticException("Cannot find square root of a negative number.");
             }
-            double sqrt = Math.sqrt(number);
-            System.out.println("Square root: " + sqrt);
+
+            double squareRoot = Math.sqrt(number);
+            System.out.println("Square root of " + number + " is: " + squareRoot);
         } catch (ArithmeticException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Invalid input! Please enter a valid integer.");
+            System.out.println("Invalid input! Please enter an integer.");
         } finally {
             scanner.close();
         }
